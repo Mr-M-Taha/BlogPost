@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %} {% block content %}
+<div class="container center flex">
+    <h1>Log in</h1>
+    <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Log in</button>
+    </form>
+    <div>
+        <p>
+            create an account?
+            <a href="{% url 'users:users-register' %}">sign up</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

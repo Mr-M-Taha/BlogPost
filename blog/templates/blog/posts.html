@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %} {% block content %} {% for post in posts %}
+<div class="col-lg-4 col-md-6 mb-4">
+    <div class="card h-100">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="text-muted">{{ post.category }} | By {{ post.author }}</p>
+            <p class="text-muted small">
+                {{ post.date }} | {{ post.reading_time }} read
+            </p>
+            <p class="card-text">{{ post.excerpt }}</p>
+
+            {% if post.published %}
+            <span class="badge bg-success">✓ Published</span>
+            {% else %}
+            <span class="badge bg-warning">Draft</span>
+            {% endif %}
+        </div>
+        <div class="card-footer">
+            <!-- ⭐ New: Link to post detail page -->
+            <a
+                href="{% url 'blog:post-details' post.id %}"
+                class="btn btn-primary btn-sm w-100"
+            >
+                Read More
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %} {% endblock %}
